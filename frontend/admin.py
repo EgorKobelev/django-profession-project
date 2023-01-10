@@ -35,8 +35,18 @@ class VacanciesPerCityTableAdmin(admin.ModelAdmin):
     search_fields = ("year",)
 
 
+class SkillPerYearsAdmin(admin.ModelAdmin):
+    list_display = ("year", "first_vacancy", "second_vacancy", "third_vacancy", "fourth_vacancy", "fifth_vacancy",
+                    "sixth_vacancy", "seventh_vacancy", "eighth_vacancy", "ninth_vacancy", "tenth_vacancy")
+    list_display_links = ("year", "first_vacancy", "second_vacancy", "third_vacancy", "fourth_vacancy", "fifth_vacancy",
+                          "sixth_vacancy", "seventh_vacancy", "eighth_vacancy", "ninth_vacancy", "tenth_vacancy")
+    search_fields = ("year", "first_vacancy", "second_vacancy", "third_vacancy", "fourth_vacancy", "fifth_vacancy",
+                     "sixth_vacancy", "seventh_vacancy", "eighth_vacancy", "ninth_vacancy", "tenth_vacancy")
+
+
 admin.site.register(SalaryPerYearsGraphics, SalaryPerYearGraphicsAdmin)
 admin.site.register(VacanciesPerCityGraphics, VacanciesPerCityGraphicsAdmin)
 admin.site.register(SalaryAndVacanciesPerYearsProfessionTable, SalaryAndVacanciesPerYearsProfessionTableAdmin)
 admin.site.register(SalaryPerCityTable, SalaryPerCityTableAdmin)
 admin.site.register(VacanciesPerCityTable, VacanciesPerCityTableAdmin)
+admin.site.register(SkillsPerYears, SkillPerYearsAdmin)

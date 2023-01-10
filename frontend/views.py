@@ -34,7 +34,12 @@ def geography(request):
 
 
 def skills(request):
-    return render(request, 'frontend/skills.html', {'title': "Навыки"})
+    skills_data = SkillsPerYears.objects.all()
+    context = {
+        'title': "Навыки",
+        "skills_data": skills_data
+    }
+    return render(request, 'frontend/skills.html', context=context)
 
 
 def vacancy(request):
@@ -57,7 +62,7 @@ def vacancy(request):
         'title': "Последние вакансии",
         'form': form,
         'data': new_date,
-        'flag': len(data['name']) != 0,
+        'flag': len(data[0]['name']) != 0,
     }
     return render(request, 'frontend/vacancy.html', context=context)
 

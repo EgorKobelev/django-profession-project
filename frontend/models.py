@@ -54,7 +54,7 @@ class SalaryPerCityTable(models.Model):
 
 class VacanciesPerCityTable(models.Model):
     city = models.CharField(max_length=255, verbose_name="город")
-    vacancy_rate = models.IntegerField(verbose_name="количество вакансий")
+    vacancy_rate = models.FloatField(verbose_name="количество вакансий")
 
     def __str__(self):
         return str(self.city) + "-" + str(self.vacancy_rate)
@@ -63,3 +63,23 @@ class VacanciesPerCityTable(models.Model):
         verbose_name = "Количество вакансий по городам - табличные значения"
         verbose_name_plural = "Количество вакансий по городам - табличные значения"
 
+
+class SkillsPerYears(models.Model):
+    year = models.IntegerField(verbose_name="год")
+    first_vacancy = models.CharField(max_length=255, verbose_name="первый навык")
+    second_vacancy = models.CharField(max_length=255, verbose_name="второй навык")
+    third_vacancy = models.CharField(max_length=255, verbose_name="третий навык")
+    fourth_vacancy = models.CharField(max_length=255, verbose_name="четвертый навык")
+    fifth_vacancy = models.CharField(max_length=255, verbose_name="пятый навык")
+    sixth_vacancy = models.CharField(max_length=255, verbose_name="шестой навык")
+    seventh_vacancy = models.CharField(max_length=255, verbose_name="седьмой навык")
+    eighth_vacancy = models.CharField(max_length=255, verbose_name="восьмой навык")
+    ninth_vacancy = models.CharField(max_length=255, verbose_name="девятый навык")
+    tenth_vacancy = models.CharField(max_length=255, verbose_name="десятый навык")
+
+    def __str__(self):
+        return str(self.year)
+
+    class Meta:
+        verbose_name = "Навыки"
+        verbose_name_plural = "Навыки"
