@@ -1,6 +1,8 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from .models import *
+from .forms import *
+from .vacancy_script import *
 
 
 def index(request):
@@ -36,7 +38,28 @@ def skills(request):
 
 
 def vacancy(request):
-    return render(request, 'frontend/vacancy.html', {'title': "Последние вакансии"})
+    data = [{'name': "", "salary": "",
+            'area_name': "", 'published_at': "", "employer_name": "",
+            "snippet_requirement": "", "snippet_responsibility": "", }]
+    new_date = []
+    if request.method == "POST":
+        form = AddForm(request.POST)
+        if form.is_valid():
+            data = get_data(int(form.cleaned_data['day']))
+            for i in range(len(data['name'])):
+                new_date.append({'name': data['name'][i], "salary": "Не указано" if data['salary'][i] == "None" else data['salary'][i],
+            'area_name':  "Не указано" if data['area_name'][i] == "None" else data['area_name'][i], 'published_at': data['published_at'][i][:10] + " " + data['published_at'][i][11:19], "employer_name": data['employer_name'][i],
+            "snippet_requirement": "Не указано" if data['snippet_requirement'][i] == "None" else data['snippet_requirement'][i], "snippet_responsibility": "Не указано" if data["snippet_responsibility"][i] == "None" else data["snippet_responsibility"][i]})
+            new_date.sort(key= lambda vacancy: vacancy["published_at"])
+    else:
+        form = AddForm()
+    context = {
+        'title': "Последние вакансии",
+        'form': form,
+        'data': new_date,
+        'flag': len(data['name']) != 0,
+    }
+    return render(request, 'frontend/vacancy.html', context=context)
 
 
 def page_not_found(request, exception):
