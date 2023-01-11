@@ -58,11 +58,12 @@ def vacancy(request):
             new_date.sort(key= lambda vacancy: vacancy["published_at"])
     else:
         form = AddForm()
+    flag = len(data["name"]) != 0
     context = {
         'title': "Последние вакансии",
         'form': form,
         'data': new_date,
-        'flag': len(data[0]['name']) != 0,
+        'flag': flag,
     }
     return render(request, 'frontend/vacancy.html', context=context)
 
