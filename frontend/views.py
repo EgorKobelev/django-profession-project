@@ -46,11 +46,13 @@ def vacancy(request):
     data = [{'name': "", "salary": "",
             'area_name': "", 'published_at': "", "employer_name": "",
             "snippet_requirement": "", "snippet_responsibility": "", }]
+    flag = False
     new_date = []
     if request.method == "POST":
         form = AddForm(request.POST)
         if form.is_valid():
             data = get_data(int(form.cleaned_data['day']))
+            flag = len(data["name"]) != 0
             for i in range(len(data['name'])):
                 new_date.append({'name': data['name'][i], "salary": "Не указано" if data['salary'][i] == "None" else data['salary'][i],
             'area_name':  "Не указано" if data['area_name'][i] == "None" else data['area_name'][i], 'published_at': data['published_at'][i][:10] + " " + data['published_at'][i][11:19], "employer_name": data['employer_name'][i],
@@ -58,7 +60,6 @@ def vacancy(request):
             new_date.sort(key= lambda vacancy: vacancy["published_at"])
     else:
         form = AddForm()
-    flag = len(data["name"]) != 0
     context = {
         'title': "Последние вакансии",
         'form': form,
