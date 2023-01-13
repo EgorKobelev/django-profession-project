@@ -1,4 +1,4 @@
-# Django project по профессии frontend-разработчик
+# Сайт по профессии frontend-разработчик
 
 
-посмотреть сайт можно по ссылке: http://aricsy.pythonanywhere.com/вакансии/
+Его можно посмотреть по ссылке: http://aricsy.pythonanywhere.com/вакансии/
