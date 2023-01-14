@@ -44,7 +44,7 @@ body {
     padding: 0;
     font-weight: 400;
     font-family: "Jura", sans-serif;
-    font-size: 32px;
+    font-size: 26px;
     line-height: 40px;
 }
 
@@ -106,6 +106,11 @@ th {
     align-self: center;
 }
 
+.header__burger:hover .burger__line {
+    background-color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
 .header .burger__line {
     position: absolute;
     width: 100%;
@@ -138,10 +143,15 @@ th {
     margin-bottom: 24px;
 }
 
+.header .navigation__item:hover .navigation__href {
+    color: #00D1DC;
+    transition: color 0.3s ease-in-out;
+}
+
 .header .navigation__href {
     color: var(--header--navigation-color--active);
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 64px;
 }
 
@@ -156,6 +166,11 @@ th {
 
 .header .navigation__burger .burger__line {
     background-color: var(--header--navigation-color--active);
+}
+
+.header .navigation__burger:hover .burger__line {
+    background-color: #00D1DC;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .header__navigation-container--active {
@@ -177,7 +192,7 @@ th {
 
 .footer__information {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 40px;
     color: var(--footer-color);
     text-align: center;
@@ -186,9 +201,13 @@ th {
 /*about*/
 
 .about__description {
-    font-size: 32px;
+    font-size: 26px;
     line-height: 40px;
     color: var(--about-color);
+}
+
+.about__title--list {
+    margin-bottom: 24px;
 }
 
 .about__description--first {
@@ -196,33 +215,45 @@ th {
 }
 
 .about__item {
-    padding-left: var(--list-padding);
+    width: 30%;
+    padding: 16px;
+    background-color: #D0D7E9;
+    border-radius: 16px;
 }
 
-.about__item:not(:last-child) {
-    margin-bottom: var(--list-padding);
+.about__item:hover {
+    background-color: #00D1DC;
+    color: white;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .about__title {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 57px;
     color: var(--about-color);
     margin-bottom: var(--offset);
 }
 
 .about__list {
-    margin-bottom: var(--offset);
+    margin-bottom: calc(var(--offset) * 2);
+    display: flex;
+    justify-content: space-between;
 }
 
 .about__image-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.about__image {
+    width: 60%;
+    object-fit: scale-down;
 }
 
 .about__description--third {
     align-self: center;
-    max-width: 700px;
+    width: 30%;
 }
 
 .about__title {
@@ -237,7 +268,7 @@ th {
 
 .interaction__title {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 40px;
     color: var(--interaction-color);
     margin-bottom: var(--offset);
@@ -250,7 +281,7 @@ th {
 
 .interaction__item  {
     padding-left: var(--list-padding);
-    font-size: 32px;
+    font-size: 26px;
     line-height: 40px;
     color: var(--interaction-color);
 }
@@ -261,7 +292,7 @@ th {
 
 .interaction__description {
     color: var(--interaction-color);
-    font-size: 32px;
+    font-size: 26px;
     line-height: 40px;
 }
 
@@ -272,8 +303,8 @@ th {
 }
 
 .technologies__title {
-        font-weight: 700;
-        font-size: 48px;
+    font-weight: 700;
+    font-size: 40px;
     line-height: 40px;
     color: var(--interaction-color);
     margin-bottom: var(--offset);
@@ -286,7 +317,7 @@ th {
 
 .technologies__item  {
     padding-left: var(--list-padding);
-    font-size: 32px;
+    font-size: 26px;
     line-height: 40px;
     color: var(--interaction-color);
 }
@@ -303,7 +334,7 @@ th {
 
 .demand__title {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 57px;
     margin-bottom: var(--offset);
     color: var(--demand-color);
@@ -336,7 +367,7 @@ th {
 
 .geography__title {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 57px;
     margin-bottom: var(--offset);
     color: var(--demand-color);
@@ -383,7 +414,7 @@ th {
 
 .vacancy__title {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 57px;
     color: var(--vacancy-color);
     text-align: center;
@@ -442,7 +473,7 @@ th {
 
 .skills__title {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 57px;
     color: var(--skills-color);
     text-align: center;
@@ -456,10 +487,13 @@ th {
 }
 
 .skills__table {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 35%;
     margin-bottom: var(--offset);
+}
+
+.skills__data {
+    display: flex;
+    justify-content: space-between;
 }
 
 .skills__table .table__body .table__cell {
@@ -477,5 +511,14 @@ th {
 }
 
 .skills__table .special__cell {
-    width: 300px;
+    width: 200px;
+}
+
+.skills_image {
+    object-fit: scale-down;
+    width: 60%;
+}
+
+.skills_data {
+    justify-content: space-between;
 }

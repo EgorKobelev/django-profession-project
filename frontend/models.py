@@ -76,6 +76,7 @@ class SkillsPerYears(models.Model):
     eighth_vacancy = models.CharField(max_length=255, verbose_name="восьмой навык")
     ninth_vacancy = models.CharField(max_length=255, verbose_name="девятый навык")
     tenth_vacancy = models.CharField(max_length=255, verbose_name="десятый навык")
+    photo = models.ImageField(upload_to="photo", verbose_name="Фото", null=True)
 
     def __str__(self):
         return str(self.year)
